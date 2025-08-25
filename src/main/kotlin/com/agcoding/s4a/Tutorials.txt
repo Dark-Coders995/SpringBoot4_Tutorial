@@ -1,0 +1,136 @@
+
+
+
+    // Response Handling 3 Ways
+    // 1 Ways (not too useful may throw 500 Server Error)
+    /*
+    @DeleteMapping("/{id}")
+    fun deleteQuote(
+        @PathVariable("id") id: Long
+    ){
+        val quoteToDelete = quotes.find { it.id == id }
+        if(quoteToDelete != null){
+            quotes.remove(quoteToDelete)
+        }
+        else{
+            throw ResponseStatusException(HttpStatus.NOT_FOUND)
+        }
+    }
+
+
+     */
+
+    /*
+    @DeleteMapping("/{id}")
+    fun deleteQuote(
+        @PathVariable("id") id: Long
+    ) : ResponseEntity<Any>{
+        val quoteToDelete = quotes.find { it.id == id }
+        return if(quoteToDelete != null){
+            quotes.remove(quoteToDelete)
+            ResponseEntity
+                .ok().build()
+        }
+        else{
+            ResponseEntity
+                .status(HttpStatus.NOT_FOUND).build()
+        }*/
+
+
+
+
+/*
+------------------------------------Before Repository Layer --------------------------------
+
+     val quotes : MutableList<QuoteDto> = mutableListOf() // --> Inside Repository
+
+    @GetMapping
+    fun  loadQuotes(
+        @RequestParam( "q" , required = false ) query : String?, // Optional parameters or Query Parameters
+    ) : List<QuoteDto> {
+        return if (query != null) {
+            quotes.filter{
+                it.content.contains(query , ignoreCase = true)
+            }
+        }
+        else{
+            quotes
+        }
+    }
+
+
+    @PostMapping
+    fun addQuote(
+        @RequestBody quoteDto: QuoteDto
+    ) : QuoteDto{
+        quotes.add(quoteDto)
+        return quoteDto
+    }
+
+    @PutMapping
+    fun updateQuote(
+        @RequestBody quoteDto: QuoteDto
+    ): QuoteDto{
+        val index = quotes.indexOfFirst { it.id == quoteDto.id }
+        quotes[index] = quoteDto
+        return quoteDto
+    }
+
+
+
+    @DeleteMapping("/{id}")
+    fun deleteQuote(
+        @PathVariable("id") id: Long
+    ) {
+        val quoteToDelete = quotes.find { it.id == id }
+        if (quoteToDelete != null) {
+            quotes.remove(quoteToDelete)
+        } else {
+            throw QuotesNotFoundException(id)
+        }
+    }
+
+
+
+
+
+    ----------------------------Creating own Beans ---------------
+    @Component ---> Mark this class as Bean help in autowiring in constructors
+    class Test {
+    init{
+    println("Hello World");
+    }
+    }
+
+    Service and Reposirory arte also wo  uses component annotations
+
+    constructor injectuion is the way shown
+    field  injection works like
+
+    @RestController
+    class Controller(){
+    @Autowired
+    lateinit var test : Test
+    }
+    
+    
+    If we Configurations then 
+    @Configuration
+class RestConfig {
+
+    @Bean
+    fun restTemplate() : RestTemplate {
+        return RestTemplate()
+    }
+    
+    @Bean
+    fun restTemplate2() : RestTemplate {
+        return RestTemplate()
+    }
+}
+
+// Check by Type if same Type then check by function name 
+ */
+
+
+
