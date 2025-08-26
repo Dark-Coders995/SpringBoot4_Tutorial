@@ -1,0 +1,19 @@
+spring:
+  application:
+    version: 0.0.1-dev
+
+
+
+quotes:
+  search:
+    ignore-case: true
+    min-length: 3
+  validation:
+    min-content-length: 3
+    max-content-length: 500
+    allowed-categories:
+      - "motivational"
+      - "funny"
+      - "tech"
+      - "wisdom"
+    require-author: true

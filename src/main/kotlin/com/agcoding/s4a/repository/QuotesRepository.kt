@@ -1,6 +1,6 @@
 package com.agcoding.s4a.repository
 
-import com.agcoding.s4a.QuoteDto
+import com.agcoding.s4a.data.QuoteDto
 import org.springframework.stereotype.Repository
 // Purpose of talking one or more data sources and properly provide the data
 @Repository
@@ -8,7 +8,7 @@ class QuotesRepository {
 
     private val quotes : MutableList<QuoteDto> = mutableListOf()
 
-    fun getQuotes() : MutableList<QuoteDto> = quotes
+    fun getQuotes() : List<QuoteDto> = quotes
 
     fun insertQuote(quote: QuoteDto) :QuoteDto {
         quotes.add(quote)

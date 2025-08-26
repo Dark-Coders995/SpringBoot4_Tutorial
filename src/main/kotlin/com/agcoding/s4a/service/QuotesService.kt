@@ -1,7 +1,8 @@
 package com.agcoding.s4a.service
 
-import com.agcoding.s4a.QuoteDto
-import com.agcoding.s4a.QuotesNotFoundException
+import com.agcoding.s4a.data.QuoteDto
+import com.agcoding.s4a.util.QuotesNotFoundException
+import com.agcoding.s4a.config.QuoteConfig
 import com.agcoding.s4a.repository.QuotesRepository
 import org.springframework.stereotype.Service
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service
 @Service
 class QuotesService(
     private  val quotesRepository : QuotesRepository ,
+    private  val quoteConfig : QuoteConfig ,
 ) {
     fun insertQuote(quotes : QuoteDto) : QuoteDto{
         return quotesRepository.insertQuote(quotes)
@@ -25,5 +27,5 @@ class QuotesService(
         }
     }
 
-    fun getQuotes() : MutableList<QuoteDto> = quotesRepository.getQuotes()
+    fun getQuotes() : List<QuoteDto> = quotesRepository.getQuotes()
 }

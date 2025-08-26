@@ -1,4 +1,4 @@
-package com.agcoding.s4a
+package com.agcoding.s4a.util
 
 class QuotesNotFoundException(
     private val id: Long

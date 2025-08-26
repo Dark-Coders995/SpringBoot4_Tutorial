@@ -129,7 +129,17 @@ class RestConfig {
     }
 }
 
-// Check by Type if same Type then check by function name 
+// Check by Type if same Type then check by function name
+
+
+----- Udage of Confg ----
+ fun getQuotes(query : String?) : List<QuoteDto> {
+        val quotes = if(query != null && query.length >= quoteConfig.search.minLength){
+            quotesRepository.getQuotes().filter {
+                it.content.contains(query, ignoreCase = quoteConfig.search.ignoreCase)
+            }
+        }
+    }
  */
 
 
